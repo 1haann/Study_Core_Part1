@@ -4,11 +4,17 @@ import hello.core.member.Grade;
 import hello.core.member.Member;
 import hello.core.member.MemberService;
 import hello.core.member.MemberServiceImpl;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class MemberApp {
     public static void main(String[] args) {
-        AppConfig appConfig = new AppConfig();
-        MemberService memberService = appConfig.memberService();
+//        AppConfig appConfig = new AppConfig();
+//        MemberService memberService = appConfig.memberService();
+
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+        MemberService memberService = applicationContext.getBean("memberService", MemberService.class);
+        // .getBean()의 name값으로 memberService라고 작성한 이유는 @Bean으로 등록할 때 메소드명으로 등록이 되기 때문이다.
         Member member = new Member(1L, "memberA", Grade.VIP);
         memberService.join(member);
 
