@@ -1,5 +1,6 @@
 package hello.core.autowired;
 
+import hello.core.AutoAppConfig;
 import hello.core.member.Member;
 import jakarta.annotation.Nullable;
 import org.junit.jupiter.api.Test;
@@ -13,8 +14,10 @@ public class AutowiredTest {
     
     @Test
     void AutowiredOption() {
-        ApplicationContext ac = new AnnotationConfigApplicationContext(TestBean.class);
-
+        ApplicationContext ac = new AnnotationConfigApplicationContext(AutoAppConfig.class);
+        for (String beanName : ac.getBeanDefinitionNames()) {
+            System.out.println("beanName = " + beanName);
+        }
     }
 
     static class TestBean {
