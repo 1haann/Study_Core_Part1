@@ -20,12 +20,12 @@ public class BeanLifeCycleTest {
     @Configuration
     static class LifeCycleConfig {
 
-        @Bean
+        @Bean(initMethod = "init", destroyMethod = "close")
         public NetworkClient networkClient() {
             NetworkClient networkClient = new NetworkClient();
-            System.out.println("before seturl");
+            System.out.println("before set url");
             networkClient.setUrl("http://hello-spring.dev");
-            System.out.println("after seturl");
+            System.out.println("after set url");
             return networkClient;
         }
     }
