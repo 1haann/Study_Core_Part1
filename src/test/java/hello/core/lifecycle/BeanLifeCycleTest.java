@@ -23,7 +23,9 @@ public class BeanLifeCycleTest {
         @Bean
         public NetworkClient networkClient() {
             NetworkClient networkClient = new NetworkClient();
+            System.out.println("before seturl");
             networkClient.setUrl("http://hello-spring.dev");
+            System.out.println("after seturl");
             return networkClient;
         }
     }
