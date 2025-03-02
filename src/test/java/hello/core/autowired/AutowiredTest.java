@@ -1,6 +1,7 @@
 package hello.core.autowired;
 
 import hello.core.AutoAppConfig;
+import hello.core.discount.DiscountPolicy;
 import hello.core.member.Member;
 import jakarta.annotation.Nullable;
 import org.junit.jupiter.api.Test;
@@ -14,7 +15,7 @@ public class AutowiredTest {
     
     @Test
     void AutowiredOption() {
-        ApplicationContext ac = new AnnotationConfigApplicationContext(AutoAppConfig.class);
+         ApplicationContext ac = new AnnotationConfigApplicationContext(AutoAppConfig.class);
         for (String beanName : ac.getBeanDefinitionNames()) {
             System.out.println("beanName = " + beanName);
         }
@@ -36,6 +37,6 @@ public class AutowiredTest {
         public void setNoBean3(Optional<Member> noBean3) {
             System.out.println("noBean3 = " + noBean3);
         }
-    } 
-    
+    }
+
 }
